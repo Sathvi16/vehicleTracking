@@ -18,7 +18,7 @@
         <maven.compiler.source>1.5</maven.compiler.source>
         <maven.compiler.target>1.5</maven.compiler.target>
         <encoding>UTF-8</encoding>
-        <scala.version>2.8.0</scala.version>
+        <scala.version>2.13.12</scala.version>
     </properties>
 
     <!--
@@ -59,9 +59,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.scala-tools.testing</groupId>
-            <artifactId>specs_${scala.version}</artifactId>
-            <version>1.6.5</version>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.13</artifactId>
+            <version>3.2.19</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -87,8 +87,10 @@
                         </goals>
                         <configuration>
                             <args>
-                                <arg>-make:transitive</arg>
+<!--                                <arg>-make:transitive</arg>-->
                                 <arg>-dependencyfile</arg>
+                                <arg>-deprecation</arg>
+                                <arg>-feature</arg>
                                 <arg>${project.build.directory}/.scala_dependencies</arg>
                             </args>
                         </configuration>
@@ -108,6 +110,14 @@
                         <include>**/*Test.*</include>
                         <include>**/*Suite.*</include>
                     </includes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>

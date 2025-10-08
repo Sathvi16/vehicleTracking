@@ -4,20 +4,9 @@ import javax.annotation.processing.Messager
 import play.api.libs.json._
 import java.net.{HttpURLConnection, URL}
 import java.io.{OutputStreamWriter, BufferedReader, InputStreamReader}
-
-
-//{
-//  "vehicleId": "KA09AB1234",
-//  "zone": "ZONE-5",
-//  "speed": 85,
-//  "timestamp": 1728213001000,
-//  "alertType": "OVERSPEED",
-//  "message": "Vehicle is speeding at 85 km/h"
-//}
-
+import models.VehicleData
 
 class HttpClient {
-  val endpoint = "http://localhost:3000/api/traffic/"
   def sendAlert(vehicle:VehicleData,alertType:String,message:String,endpoint:String): Unit = {
     // prepare a json with this information and pass to endpoint as a json content.
 
@@ -31,7 +20,7 @@ class HttpClient {
     )
 
     val jsonString: String = Json.stringify(json)
-    println(jsonString)
+    println(s"Json string is : ${jsonString}")
 
     val url = new URL(endpoint)
     val conn = url.openConnection().asInstanceOf[HttpURLConnection]

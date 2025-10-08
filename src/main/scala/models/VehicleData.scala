@@ -22,5 +22,5 @@ import play.api.libs.json.{Reads,Json}
 //    }
 //}
 
-case class VehicleData(val vehicleId:String, val zone:String, val speed:Double, val timestamp: Timestamp)
+case class VehicleData(val vehicleId:String, val zone:String, val speed:Double, val timestamp: Long)
 //implicit val reads: Reads[VehicleData] = Json.reads[VehicleData]
